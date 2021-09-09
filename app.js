@@ -1,8 +1,14 @@
+//Require dotenv config when application is not running in PROD ENV
+if (process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
+
 const ejsMate = require('ejs-mate');
 const express = require('express');
 const flash = require('connect-flash');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
+const multer = require('multer');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const path = require('path');
@@ -43,6 +49,7 @@ app.engine('ejs', ejsMate);
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+mongoose.set('useFindAndModify', false); //Added to prevent displaying warnings on terminal //TODO: remove after upgrade to v 6.0
 
 // for allowing application to access data submitted via HTML form
 app.use(express.urlencoded({extended: true}));
@@ -92,3 +99,4 @@ app.listen(3000, () => {
     console.log('Serving on port 3000')
 });
 // TODO: remove unneccessary 'next' parameters in the routes
+// TODO: Update mongoose to v 6.0.5 https://github.com/Automattic/mongoose

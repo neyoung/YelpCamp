@@ -7,7 +7,7 @@
                 <div class="row">
                     <!-- Each row takes up 4 parts for image and 8 parts for text. Max total of 12 parts -->
                     <div class="col-md-4">
-                        <img src="<%= campground.image %>" alt="" class="img-fluid">
+                        <img src="<%= campground.images[0].url %>" alt="" class="img-fluid">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -22,4 +22,3 @@
                 </div>
             </div>
         <% } %>
-    </div>

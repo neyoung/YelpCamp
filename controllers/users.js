@@ -30,7 +30,6 @@ module.exports.register = async (req, res) => {
 }
 module.exports.login = (req, res) =>{
     const redirectUrl = req.session.returnTo || '/campgrounds';
-    console.log(redirectUrl);
     req.flash('success', 'Welcome Back!');
     res.redirect(redirectUrl);
 }
