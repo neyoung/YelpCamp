@@ -9,6 +9,7 @@ const catchAsync = require('../utils/catchAsync');
 // Needs to be destructed otherwise causes error 
 const { isLoggedIn, isAuthor, validateId, validateCampground} = require('../middleware');
 
+//The full route paths are defined in app.js
 router.route('/')
     .get(catchAsync(campgrounds.renderIndex))
     //TODO: rewrite validateCampground to include multer's req.body

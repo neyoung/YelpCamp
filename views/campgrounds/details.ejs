@@ -49,6 +49,7 @@
     </div>
     <!-- Review detail section use the remaining 6 column space-->
     <div class="col-6">
+        <div id="map" class="mb-3"></div>
         <% if (currentUser) { %>
             <div class="mb-3">
                 <h1 class="mb-2">Leave a Review</h1>
@@ -99,3 +100,8 @@
         <% } %> 
     </div>
 </div>
+<script>
+    const mapToken = '<%- process.env.MAPBOX_TOKEN %>';
+    const campground = <%- JSON.stringify(campground) %>;
+</script>
+<script src="/javascripts/detailsPageMap.js"></script>

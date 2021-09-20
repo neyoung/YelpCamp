@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Review = require('./review')
 const Schema = mongoose.Schema;
+//Saves campgroundSchema virtuals to the MongoDB which is accessible via .js
+const opts = { toJSON: { virtuals: true } };
 
 const ImageSchema = new Schema({
     url: String,
@@ -8,6 +10,7 @@ const ImageSchema = new Schema({
 });
 
 //Uses Cloudinary transformation to get thumbnail version of images by ref. field name 'thumbnail'
+//Not saved to MongoDB and only accessible via html
 ImageSchema.virtual('thumbnail').get(function () {
     return this.url.replace('/upload', '/upload/w_200,h_150');
 });
@@ -15,7 +18,18 @@ ImageSchema.virtual('thumbnail').get(function () {
 const campgroundSchema = new Schema({
     title: String,
     images: [ImageSchema],
-    price: Number, 
+    price: Number,
+    geometry: {
+        type: {
+            type: String,
+            enum: ['Point'],
+            required: true
+        }, 
+        coordinates: {
+            type: [Number],
+            required: true
+        }
+    },
     description: String,
     location: String,
     author: {
@@ -26,6 +40,10 @@ const campgroundSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Review'
     }]
+}, opts);
+
+campgroundSchema.virtual('properties.popupMarkUp').get(function () {
+    return `<a href="/campgrounds/${this._id}">${this.title}</a>`;
 });
 
 /*
