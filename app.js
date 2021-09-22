@@ -97,7 +97,8 @@ const styleSrcUrls = [
     "https://api.tiles.mapbox.com",
     "https://fonts.googleapis.com",
     "https://use.fontawesome.com",
-    "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/"
+    "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/", 
+    "https://stackpath.bootstrapcdn.com/bootstrap/"
 ];
 
 const connectSrcUrls = [
