@@ -70,7 +70,7 @@ app.engine('ejs', ejsMate);
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-mongoose.set('useFindAndModify', false); //Added to prevent displaying warnings on terminal //TODO: remove after upgrade to v 6.0
+mongoose.set('useFindAndModify', false); //Added to prevent displaying warnings on terminal
 
 // for allowing application to access data submitted via HTML form
 app.use(express.urlencoded({extended: true}));
@@ -169,5 +169,3 @@ app.use((err, req, res, next) => {
 app.listen(port, () => {
     console.log(`Serving on port ${port}`);
 });
-// TODO: remove unneccessary 'next' parameters in the routes
-// TODO: Update mongoose to v 6.0.5 https://github.com/Automattic/mongoose

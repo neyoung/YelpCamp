@@ -7,7 +7,9 @@
                 <div class="row">
                     <!-- Each row takes up 4 parts for image and 8 parts for text. Max total of 12 parts -->
                     <div class="col-md-4">
-                        <img src="<%= campground.images[0].url %>" alt="" class="img-fluid">
+                        <% if (campground.images.length > 0) { %>
+                            <img src="<%= campground.images[0].url %>" alt="" class="img-fluid">
+                        <% } %>
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">

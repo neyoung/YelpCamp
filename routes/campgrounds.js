@@ -12,7 +12,6 @@ const { isLoggedIn, isAuthor, validateId, validateCampground} = require('../midd
 //The full route paths are defined in app.js
 router.route('/')
     .get(catchAsync(campgrounds.renderIndex))
-    //TODO: rewrite validateCampground to include multer's req.body
     .post(isLoggedIn, upload.array('campground[image]'), validateCampground, catchAsync(campgrounds.createCamp));
 
 //This route MUST come before '/:id' to avoid route interference    
